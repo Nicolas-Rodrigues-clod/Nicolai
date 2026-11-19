@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger ADS - Cardapio Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="topo">
+        <div class="container">
+            <h1>Burger ADS</h1>
+            <p>Cardapio Digital integrado ao PostgreSQL em Nuvem (Supabase)</p>
+            <div id="status-conexao" class="status status-aviso">
+                Aguardando configuracao do Supabase...
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Secao de Cadastro (Desafio da Pratica 04) -->
+        <section class="card">
+            <h2>Cadastrar Novo Item no Cardapio</h2>
+            <p class="descricao">
+                Preencha os campos abaixo para testar o comando <code>INSERT</code> via JavaScript.
+            </p>
+            <form id="form-produto" class="formulario">
+                <div class="campo">
+                    <label for="nome-produto">Nome do Item</label>
+                    <input type="text" id="nome-produto" placeholder="Ex: X-Bacon Artesanal" required>
+                </div>
+
+                <div class="campo">
+                    <label for="categoria-produto">Categoria</label>
+                    <select id="categoria-produto" required>
+                        <option value="Lanche">Lanche</option>
+                        <option value="Porcao">Porcao</option>
+                        <option value="Bebida">Bebida</option>
+                        <option value="Sobremesa">Sobremesa</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="preco-produto">Preco (R$)</label>
+                    <input type="number" id="preco-produto" step="0.01" min="0" placeholder="Ex: 28.90" required>
+                </div>
+
+                <button type="submit" class="btn-primario">Adicionar ao Cardapio</button>
+            </form>
+            <p id="mensagem-form" class="mensagem-form"></p>
+        </section>
+
+        <!-- Secao de Listagem (SELECT automatico) -->
+        <section class="card">
+            <div class="cabecalho-secao">
+                <div>
+                    <h2>Nosso Cardapio</h2>
+                    <p class="descricao">
+                        Itens carregados diretamente da tabela <code>produto</code> no Supabase.
+                    </p>
+                </div>
+                <button type="button" id="btn-recarregar" class="btn-secundario">Atualizar Cardapio</button>
+            </div>
+
+            <div id="lista-produtos" class="grade-produtos">
+                <p class="vazio">Nenhum item carregado.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Burger ADS | Disciplina: Programacao e Desenvolvimento de Banco de Dados - Pratica 04</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
